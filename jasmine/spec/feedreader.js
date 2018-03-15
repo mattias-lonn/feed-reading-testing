@@ -21,19 +21,19 @@ $(function() {
 
         // Checks if items of AllFeed has link(s)
         it('have links', function() {
-            allFeeds.forEach(function(feed) {
+			for (const feed of allFeeds) {
                 expect(feed.url).toBeDefined();
                 expect(feed.url.length).not.toBe(0);
                 expect(feed.url).toMatch(/^(http|https):\/\//);
-            });
+            }
         });
 
         // Checks if items of AllFeed has name(s)
         it('have names', function() {
-            allFeeds.forEach(function(feed) {
+            for (const feed of allFeeds) {
                 expect(feed.name).toBeDefined();
                 expect(feed.name.length).not.toBe(0);
-            });
+            }
         });
 
     });
@@ -46,17 +46,17 @@ $(function() {
 
         // Checks if the menu is hidden by default
         it('are hidden by default', function() {
-            expect($("body").attr("class")).toBe("menu-hidden");
+            expect($("body").hasClass("menu-hidden")).toBe(true);
         });
 
 
         // Checks if the menu is hidden or not on click
         it('are visible/hidden on click', function() {
             menu.click();
-            expect($("body").attr("class")).not.toBe("menu-hidden");
+            expect($("body").hasClass("menu-hidden")).toEqual(false);
 
             menu.click();
-            expect($("body").attr("class")).toBe("menu-hidden");
+            expect($("body").hasClass("menu-hidden")).toEqual(true);
         });
 
     });
@@ -73,7 +73,7 @@ $(function() {
 
         // Checks if at least one feed is found
         it('found atleast one entry from feed', function(done) {
-            expect($(".entry").length).toBeGreaterThan(0);
+            expect($(".feed .entry").length).toBeGreaterThan(0);
             done();
         });
 
@@ -101,7 +101,6 @@ $(function() {
             expect(firstFeed).not.toBe($(".feed").html());
             done();
         });
-
 
     });
 
