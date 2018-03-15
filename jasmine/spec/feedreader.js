@@ -62,8 +62,6 @@ $(function() {
     });
 
 
-
-
     describe("Initial Entries", function() {
 
         // Avoiding duplicate setup
@@ -98,7 +96,7 @@ $(function() {
             });
         });
 
-        // Make sure the content is not the same from feed 0 and feed 1
+        // Make sure the content is not the same from the feeds
         it('loaded different feeds', function(done) {
             expect(firstFeed).not.toBe($(".feed").html());
             done();
